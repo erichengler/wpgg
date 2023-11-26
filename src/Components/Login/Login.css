@@ -6,8 +6,8 @@ h1{
 }
 
 .container{
-    height: 280px;
-    width: 380px;
+    height: 290px;
+    width: 340px;
     display: flex;
     flex-direction: column;
     background: #4a4a4a;
@@ -38,6 +38,7 @@ h1{
     background: #2e2e2e;
     border-radius: 5px;
     margin: 8px;
+    border: 1px solid #111111;
 }
 
 input{
@@ -57,6 +58,7 @@ input{
     margin-top: 15px;
     margin-bottom: 10px;
     cursor: pointer;
+    box-shadow: 2px 2px 2px #2e2e2e;
 }
 
 .form-type{
