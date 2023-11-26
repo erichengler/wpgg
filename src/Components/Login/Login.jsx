@@ -5,20 +5,23 @@ import user_icon from "../../Assets/images/person.png";
 import "./Login.css";
 
 const Login = () => {
-  // ------- Storing username and password -------
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
-  // ------- Storing username and password -------
   const [formHeader, setFormHeader] = useState("Login");
 
-  const login = (event) => {
-    setFormHeader("Login");
-  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
-  const register = () => {
-    setFormHeader("Register");
-  };
+    console.log('Username:', username);
+    console.log('Password:', password);
+
+    // Eventually add backend logic here for login/register
+  }
+
+  const toggleForm = () => {
+    setFormHeader(formHeader === "Login" ? "Register" : "Login");
+  }
 
   return (
     <>
@@ -26,7 +29,7 @@ const Login = () => {
         <i>WPGG</i>
       </h1>
       <div className="container">
-        <form className="form">
+        <form className="form" onSubmit={handleSubmit}>
           <span className="form-header">{formHeader}</span>
           <div className="input">
             <img className="form-image" src={user_icon} alt="Username" />
@@ -53,11 +56,8 @@ const Login = () => {
             {formHeader === 'Login' ? 'Login' : 'Register'}
           </button>
           <div className="form-type">
-            <div className="login" onClick={login}>
-              Login
-            </div>
-            <div className="signup" onClick={register}>
-              Register
+            <div className="toggle-button" onClick={toggleForm}>
+              {formHeader === "Login" ? "Click Here To Register" : "Click Here To Login"}
             </div>
           </div>
         </form>
