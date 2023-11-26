@@ -1,0 +1,81 @@
+h1{
+    color: #5fa2b5;
+    margin-top: -10px;
+    font-size: 3.2em;
+    line-height: 1.1;
+}
+
+.container{
+    height: 280px;
+    width: 380px;
+    display: flex;
+    flex-direction: column;
+    background: #4a4a4a;
+    border: 1px solid #5fa2b5;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.form-header{
+    color: #111111;
+    font-size: x-large;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.form-image{
+    padding-top: 15px;
+    padding-right: 10px;
+    padding-left: 20px;
+    height: 12px;
+}
+
+.input{
+    background: #2e2e2e;
+    border-radius: 5px;
+    margin: 8px;
+}
+
+input{
+    font-size: 16px;
+    height: 42px;
+    width: 200px;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.submit-button{
+    font-size: medium;
+    width: 180px;
+    height: 28px;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.form-type{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+}
+
+.login, .signup{
+    font-weight: 600;
+    color: #111111;
+    padding: 0px 12px 5px 12px;
+}
+
+.login:hover, .signup:hover{
+    font-style: italic;
+    color: #5fa2b5;
+    cursor: pointer;
+}
+
+
+
