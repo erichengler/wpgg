@@ -6,7 +6,6 @@ const User = () => {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
-    // ! UNSECURE - ADD .ENV FILE BEFORE PUBLISHING
     const apiKey = process.env.STEAM_API_KEY;
     const steamId = "76561197969504268";
 
