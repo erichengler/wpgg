@@ -20,15 +20,18 @@ const Login = () => {
         JSON.stringify({ username, password })
       );
       console.log("Registered new user:", { username, password });
-    } else {
+    }
+
+    if (formHeader === "Login") {
       const storedUser = JSON.parse(localStorage.getItem("registeredUser"));
+
       if (
         storedUser &&
         storedUser.username === username &&
         storedUser.password === password
       ) {
         console.log("Login successful");
-        navigate("/user")
+        navigate("/user");
       } else {
         console.log("Login failed. Please try again.");
       }
