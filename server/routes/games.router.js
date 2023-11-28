@@ -2,8 +2,18 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
 
+router.get('/', async (req, res) => {
+    try {
+        const result = await pool.query(`SELECT * FROM games`);
+        res.json(result.rows);
+    
+    } catch (error) {
+        console.log('Error fetching games:', error);
+        res.sendStatus(500);
+    }
+});
+
 router.post('/', async (req, res) => {
-    console.log(req);
     const { title, hours, notes, playing } = req.body;
 
     try {

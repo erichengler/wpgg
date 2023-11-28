@@ -1,26 +1,23 @@
-.navbar {
+.navbar{
   margin-right: -17px;
   padding: 15px;
 }
 
-.menu a {
+.menu a{
   text-decoration: none;
-  color: #5fa2b5; /* Choose your link color */
-  margin-right: 20px; /* Adjust spacing between links */
+  color: #5fa2b5;
+  margin-right: 20px;
+}
+
+.menu-item:hover{
+  cursor: pointer;
+  color: rgb(175, 197, 215);
 }
 
 /* Media query for mobile responsiveness */
-@media screen and (max-width: 768px) {
-  .navbar {
+@media screen and (max-width: 768px){
+  .navbar{
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  .menu {
-    margin-top: 20px; /* Adjust margin for spacing between logo and links */
-  }
-
-  .menu a {
-    margin-right: 20px;
   }
 }
