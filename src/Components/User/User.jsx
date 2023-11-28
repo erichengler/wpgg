@@ -32,26 +32,13 @@ const User = () => {
     });
   };
 
-  // useEffect(() => {
-  //   const apiKey = process.env.STEAM_API_KEY;
-  //   const steamId = "76561197969504268";
-
-  //   axios
-  //     .get(
-  //       `https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=${apiKey}&steamid=${steamId}&format=json`
-  //     )
-  //     .then((response) => {
-  //       setGames(response.data.response.games);
-  //     })
-  //     .catch((error) => {
-  //       console.log("Error fetching Steam user data:", error);
-  //     });
-  // }, []);
-
   return (
     <>
+      <h1>
+        <i>WPGG</i>
+      </h1>
       <div className="new-game-container">
-        <h2 className="new-game-header">Add New Game:</h2>
+        <h2 className="new-game-header">Add New Game</h2>
         <form onSubmit={handleSubmit} className="form">
           <div className="new-game-input">
             <input
@@ -74,6 +61,7 @@ const User = () => {
               onChange={handleChange}
               placeholder="Hours Played"
               className="inputField"
+              min="0"
             />
           </div>
           <br />
@@ -99,20 +87,13 @@ const User = () => {
           </div>
           <br />
 
-          <button type="submit" className="form-button">Submit</button>
+          <button type="submit" className="form-button">
+            Submit
+          </button>
         </form>
       </div>
       <br />
       <br />
-
-      <div>
-        <h2>Games Owned:</h2>
-        <ul>
-          {games.map((game) => (
-            <li key={game.appid}>{game.name}</li>
-          ))}
-        </ul>
-      </div>
     </>
   );
 };
