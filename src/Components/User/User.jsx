@@ -1,6 +1,7 @@
 import axios from "axios";
+import { useState } from "react";
 import "./User.css";
-import { useEffect, useState } from "react";
+
 
 const User = () => {
   const [games, setGames] = useState([]);
@@ -8,7 +9,7 @@ const User = () => {
     title: "",
     hours: "",
     notes: "",
-    currentlyPlaying: false,
+    playing: false,
   });
 
   const handleChange = (event) => {
@@ -19,17 +20,27 @@ const User = () => {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Logic to add game to database goes here
+    
+    try {
+      console.log(formData);
+      await axios.post('http://localhost:5000/api/games', formData);
 
-    // Reset form data
-    setFormData({
-      title: "",
-      hours: 0,
-      notes: "",
-      currentlyPlaying: false,
-    });
+      // Reset form data
+      setFormData({
+        title: "",
+        hours: "",
+        notes: "",
+        playing: false,
+      });
+
+      const response = await axios.get('http://localhost:5000/api/games');
+      setGames(response.data);
+
+    } catch (error) {
+      console.log('Error adding game:', error);
+    }
   };
 
   return (
@@ -77,11 +88,11 @@ const User = () => {
           </div>
 
           <div className="playing">
-            Currently Playing
+            <span>Currently Playing </span>
             <input
               type="checkbox"
-              name="currentlyPlaying"
-              checked={formData.currentlyPlaying}
+              name="playing"
+              checked={formData.playing}
               onChange={handleChange}
             />
           </div>
@@ -94,6 +105,15 @@ const User = () => {
       </div>
       <br />
       <br />
+
+      <div>
+        <h2>Games Owned:</h2>
+        <ul>
+          {games.map((game) => (
+            <li key={game.appid}>{game.name}</li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 };
