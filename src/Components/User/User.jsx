@@ -25,7 +25,7 @@ const User = () => {
     
     try {
       console.log(formData);
-      await axios.post('http://localhost:5000/api/games', formData);
+      await axios.post('/games', formData);
 
       // Reset form data
       setFormData({
@@ -35,8 +35,8 @@ const User = () => {
         playing: false,
       });
 
-      const response = await axios.get('http://localhost:5000/api/games');
-      setGames(response.data);
+      // const response = await axios.get('/games');
+      // setGames(response.data);
 
     } catch (error) {
       console.log('Error adding game:', error);
