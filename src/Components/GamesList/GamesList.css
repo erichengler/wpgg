@@ -1,0 +1,50 @@
+.games-container{
+    min-height: 420px;
+    width: 340px;
+    display: flex;
+    flex-direction: column;
+    background: #4a4a4a;
+    border: 1px solid #5fa2b5;
+}
+
+.games-header{
+    color: #111111;
+    font-size: x-large;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-decoration: underline;
+}
+
+.item-container{
+    margin: 10px;
+    background: #2e2e2e;
+    border-radius: 5px;
+}
+
+.games-list{
+    list-style: none;
+    text-align: left;
+    margin-left: -15px;
+}
+
+.game-title{
+    font-size: larger;
+    font-weight: 600;
+    color: #5fa2b5;
+}
+
+.filter{
+    color: #111111;
+    cursor: default;
+}
+
+.filter-by{
+    color: #111111;
+    font-weight: 500;
+}
+
+.filter-by:hover{
+    color: #5fa2b5;
+    font-style: italic;
+    cursor: pointer;
+}

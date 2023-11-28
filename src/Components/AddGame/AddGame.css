@@ -12,6 +12,7 @@
     font-size: x-large;
     font-weight: 700;
     margin-bottom: -8px;
+    text-decoration: underline;
 }
 
 .new-game-input{
@@ -20,8 +21,6 @@
     border-radius: 5px;
     border: 1px solid #111111;
 }
-
-
 
 .notes-input{
     min-width: 220px;
