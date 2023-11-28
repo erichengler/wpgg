@@ -1,10 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
-import "./User.css";
+import "./AddGame.css";
 
 
 const User = () => {
-  const [games, setGames] = useState([]);
   const [formData, setFormData] = useState({
     title: "",
     hours: "",
@@ -24,6 +23,9 @@ const User = () => {
     event.preventDefault();
     
     try {
+      if (formData.hours === "") {
+        formData.hours = 0;
+      }
       console.log(formData);
       await axios.post('/games', formData);
 
@@ -45,9 +47,6 @@ const User = () => {
 
   return (
     <>
-      <h1>
-        <i>WPGG</i>
-      </h1>
       <div className="new-game-container">
         <h2 className="new-game-header">Add New Game</h2>
         <form onSubmit={handleSubmit} className="form">
@@ -102,17 +101,6 @@ const User = () => {
             Submit
           </button>
         </form>
-      </div>
-      <br />
-      <br />
-
-      <div>
-        <h2>Games Owned:</h2>
-        <ul>
-          {games.map((game) => (
-            <li key={game.appid}>{game.name}</li>
-          ))}
-        </ul>
       </div>
     </>
   );

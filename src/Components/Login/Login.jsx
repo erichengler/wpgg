@@ -31,7 +31,7 @@ const Login = () => {
         storedUser.password === password
       ) {
         console.log("Login successful");
-        navigate("/user");
+        navigate("/addgame");
       } else {
         console.log("Login failed. Please try again.");
       }
@@ -45,9 +45,6 @@ const Login = () => {
 
   return (
     <>
-      <h1>
-        <i>WPGG</i>
-      </h1>
       <div className="container">
         <form className="form" onSubmit={handleSubmit}>
           <span className="form-header">{formHeader}</span>
