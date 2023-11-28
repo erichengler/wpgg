@@ -1,5 +1,5 @@
 .new-game-container{
-    height: 450px;
+    height: 420px;
     width: 340px;
     display: flex;
     flex-direction: column;
@@ -7,11 +7,21 @@
     border: 1px solid #5fa2b5;
 }
 
+.new-game-header{
+    color: #111111;
+    font-size: x-large;
+    font-weight: 700;
+    margin-bottom: -8px;
+}
+
 .new-game-input{
+    margin-top: -10px;
     background: #2e2e2e;
     border-radius: 5px;
     border: 1px solid #111111;
 }
+
+
 
 .notes-input{
     min-width: 220px;
@@ -19,14 +29,24 @@
     background: #2e2e2e;
     border-radius: 5px;
     resize: none;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    margin-top: -10px;
     border: 1px solid #111111;
     padding: 5px;
 }
 
 .playing{
-   margin-bottom: -22px;
    color: black;
    font-weight: 600;
    margin-right: 5px;
+}
+
+.form-button{
+    font-size: medium;
+    width: 180px;
+    height: 28px;
+    margin: auto;
+    margin-top: -10px;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px #2e2e2e;
 }

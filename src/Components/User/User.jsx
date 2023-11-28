@@ -6,9 +6,9 @@ const User = () => {
   const [games, setGames] = useState([]);
   const [formData, setFormData] = useState({
     title: "",
-    hours: 0,
+    hours: "",
     notes: "",
-    playing: false,
+    currentlyPlaying: false,
   });
 
   const handleChange = (event) => {
@@ -28,7 +28,7 @@ const User = () => {
       title: "",
       hours: 0,
       notes: "",
-      playing: false,
+      currentlyPlaying: false,
     });
   };
 
@@ -51,7 +51,7 @@ const User = () => {
   return (
     <>
       <div className="new-game-container">
-        <h2 className="form-header">Add New Game:</h2>
+        <h2 className="new-game-header">Add New Game:</h2>
         <form onSubmit={handleSubmit} className="form">
           <div className="new-game-input">
             <input
@@ -69,7 +69,7 @@ const User = () => {
           <div className="new-game-input">
             <input
               type="number"
-              name="hoursPlayed"
+              name="hours"
               value={formData.hours}
               onChange={handleChange}
               placeholder="Hours Played"
@@ -99,7 +99,7 @@ const User = () => {
           </div>
           <br />
 
-          <button type="submit" className="submit-button">Submit</button>
+          <button type="submit" className="form-button">Submit</button>
         </form>
       </div>
       <br />
