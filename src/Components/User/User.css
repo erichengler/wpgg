@@ -1,0 +1,32 @@
+.new-game-container{
+    height: 450px;
+    width: 340px;
+    display: flex;
+    flex-direction: column;
+    background: #4a4a4a;
+    border: 1px solid #5fa2b5;
+}
+
+.new-game-input{
+    background: #2e2e2e;
+    border-radius: 5px;
+    border: 1px solid #111111;
+}
+
+.notes-input{
+    min-width: 220px;
+    min-height: 100px;
+    background: #2e2e2e;
+    border-radius: 5px;
+    resize: none;
+    margin-bottom: 10px;
+    border: 1px solid #111111;
+    padding: 5px;
+}
+
+.playing{
+   margin-bottom: -22px;
+   color: black;
+   font-weight: 600;
+   margin-right: 5px;
+}

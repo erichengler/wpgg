@@ -54,6 +54,7 @@ const Login = () => {
           <div className="input">
             <img className="form-image" src={user_icon} alt="Username" />
             <input
+              className="inputField"
               type="text"
               placeholder="Username"
               required
@@ -64,6 +65,7 @@ const Login = () => {
           <div className="input">
             <img className="form-image" src={password_icon} alt="Password" />
             <input
+              className="inputField"
               type="password"
               placeholder="Password"
               required
