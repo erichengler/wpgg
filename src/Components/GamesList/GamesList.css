@@ -46,6 +46,13 @@
 
 .filter-by:hover{
     color: #5fa2b5;
-    font-style: italic;
     cursor: pointer;
+}
+
+.filter-yes{
+    color: rgb(0, 165, 0);
+}
+
+.filter-no{
+    font-size: small;
 }

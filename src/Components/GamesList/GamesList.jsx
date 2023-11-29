@@ -4,8 +4,8 @@ import "./GamesList.css";
 
 function GamesList() {
   const [games, setGames] = useState([]);
-  const [sortCriteria, setSortCriteria] = useState('hours');
-  const [sortOrder, setSortOrder] = useState('desc');
+  const [sortCriteria, setSortCriteria] = useState("hours");
+  const [sortOrder, setSortOrder] = useState("desc");
 
   useEffect(() => {
     const fetchGames = async () => {
@@ -23,53 +23,51 @@ function GamesList() {
 
   const handleSortBy = (criteria) => () => {
     if (sortCriteria === criteria) {
-      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
-    
+      setSortOrder(sortOrder === "asc" ? "desc" : "asc");
     } else {
       setSortCriteria(criteria);
-      setSortOrder('asc');
+      setSortOrder("asc");
     }
   };
 
   const sortedGames = games.sort((a, b) => {
     // Sort based on criteria and order
-    if (sortCriteria === 'name') {
-      return sortOrder === 'desc' 
+    if (sortCriteria === "name") {
+      return sortOrder === "desc"
         ? b.title.localeCompare(a.title)
         : a.title.localeCompare(b.title);
-
-    } else if (sortCriteria === 'hours') {
-      return sortOrder === 'asc'
-        ? a.hours - b.hours
-        : b.hours - a.hours;
-
-    } else if (sortCriteria === 'playing') {
-      return sortOrder === 'asc' 
+    } else if (sortCriteria === "hours") {
+      return sortOrder === "asc" ? a.hours - b.hours : b.hours - a.hours;
+    } else if (sortCriteria === "playing") {
+      return sortOrder === "asc"
         ? a.playing - b.playing
-        : b.playing - a.playing
+        : b.playing - a.playing;
     }
     // Default, no sorting
     return;
-  })
+  });
 
   return (
     <div className="games-container">
       <h2 className="games-header">Games</h2>
 
       <div className="filter">
-        <span className="filter-by" onClick={handleSortBy('name')}>
-          Name {sortCriteria === 'name' && (sortOrder === 'asc' ? '▲' : '▼')}
-        </span> | &nbsp;
-
-        <span className="filter-by" onClick={handleSortBy('hours')}>
-          Hours {sortCriteria === 'hours' && (sortOrder === 'asc' ? '▲' : '▼')}
-        </span> | &nbsp;
-
-        <span className="filter-by" onClick={handleSortBy('playing')}>
-          Currently Playing {sortCriteria === 'playing' && (sortOrder === 'asc' ? '❌' : '✔' )}
+        <span className="filter-by" onClick={handleSortBy("name")}>
+          Name {sortCriteria === "name" && (sortOrder === "asc" ? "▲" : "▼")}
+        </span>{" "}
+        &nbsp;| &nbsp;
+        <span className="filter-by" onClick={handleSortBy("hours")}>
+          Hours {sortCriteria === "hours" && (sortOrder === "asc" ? "▲" : "▼")}
+        </span>{" "}
+        &nbsp;| &nbsp;
+        <span className="filter-by" onClick={handleSortBy("playing")}>
+          Currently Playing{" "}
+          <span className={sortOrder === "asc" ? "filter-no" : "filter-yes"}>
+            {sortCriteria === "playing" && (sortOrder === "asc" ? "❌" : "✔")}
+          </span>
         </span>
       </div>
-      
+
       {games.length === 0
         ? "No Games Found"
         : sortedGames.map((game) => (
@@ -80,14 +78,20 @@ function GamesList() {
                   {game.hours} hours &nbsp;
                   <button className="notes">View Notes</button>
                   <br />
-                  {game.playing
-                    ? `✔ Currently Playing`
-                    : `❌ Not Currently Playing`}
+                  <span className={game.playing ? 'filter-yes' : 'filter-no'}>
+                    {game.playing
+                      ? `✔`
+                      : `❌`}
+                  </span>
+                  <span>
+                    {game.playing
+                      ? ' Currently Playing'
+                      : ' Not Currently Playing'}
+                  </span>
                 </li>
               </ul>
             </div>
-        ))
-      }
+          ))}
     </div>
   );
 }
