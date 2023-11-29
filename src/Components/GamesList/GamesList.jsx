@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+import Popup from "reactjs-popup";
 import trash_icon from "../../Assets/images/trash.png";
 import "./GamesList.css";
 
@@ -68,15 +69,15 @@ function GamesList() {
 
       {/* Sort by filter */}
       <div className="filter">
-        <span className="filter-by" onClick={handleSortBy("name")}>
+        <span onClick={handleSortBy("name")}>
           Name {sortCriteria === "name" && (sortOrder === "asc" ? "▲" : "▼")}
         </span>{" "}
         &nbsp;| &nbsp;
-        <span className="filter-by" onClick={handleSortBy("hours")}>
+        <span onClick={handleSortBy("hours")}>
           Hours {sortCriteria === "hours" && (sortOrder === "asc" ? "▲" : "▼")}
         </span>{" "}
         &nbsp;| &nbsp;
-        <span className="filter-by" onClick={handleSortBy("playing")}>
+        <span onClick={handleSortBy("playing")}>
           Currently Playing{" "}
           <span className={sortOrder === "asc" ? "filter-no" : "filter-yes"}>
             {sortCriteria === "playing" && (sortOrder === "asc" ? "❌" : "✔")}
@@ -89,23 +90,26 @@ function GamesList() {
         ? "No Games Found"
         : sortedGames.map((game) => (
             <div key={game.id} className="item-container">
-              <div className="title-and-delete">
+              <div className="title">
                 <span className="game-title">{game.title}</span>
-                <img 
-                  className="trash-can" 
-                  src={trash_icon} 
-                  alt="Password" 
-                  onClick={() => handleRemoveGame(game.id)}
-                />
               </div>
 
               <ul className="games-list">
                 <li>
+                  {/* Notes Popup */}
+                  <Popup
+                    trigger={<button className="notes-button">Notes</button>}
+                    position="center"
+                  >
+                    <div className="popup-div">
+                      <textarea className="popup-text">{game.notes}</textarea>
+                      <button className="popup-button">Save</button>
+                    </div>
+                  </Popup>
                   {game.hours} hours &nbsp;
-                  <button className="notes">View Notes</button>
                   <br />
-                  <div className="currently-playing">
-                    <span className={game.playing ? "filter-yes" : "filter-no"}>
+                  <div className="bottom-row">
+                    <span className={game.playing ? "playing-yes" : "playing-no"}>
                       {game.playing ? `✔` : `❌`}
                     </span>
                     <span>
@@ -113,6 +117,14 @@ function GamesList() {
                         ? " Currently Playing"
                         : " Not Currently Playing"}
                     </span>
+
+                    {/* Delete icon */}
+                    <img
+                      className="trash-can"
+                      src={trash_icon}
+                      alt="Password"
+                      onClick={() => handleRemoveGame(game.id)}
+                    />
                   </div>
                 </li>
               </ul>

@@ -27,15 +27,12 @@
     margin-left: -15px;
 }
 
-.title-and-delete{
-    justify-content: space-between;
+.title{
     padding-left: 20px;
     padding-top: 13px;
-    padding-right: 10px;
     margin-bottom: -12px;
     list-style: none;
     display: flex;
-    flex-direction: row;
 }
 
 .game-title{
@@ -46,13 +43,9 @@
 
 .filter{
     color: #111111;
+    font-weight: 500;
     cursor: default;
     margin-bottom: 5px;
-}
-
-.filter-by{
-    color: #111111;
-    font-weight: 500;
 }
 
 .filter-by:hover{
@@ -68,18 +61,66 @@
     font-size: small;
 }
 
-.notes{
+.playing-yes{
+    margin-right: -115px;
+    color: rgb(0, 165, 0);
+}
+
+.playing-no{
+    margin-top: 3px;
+    margin-right: -80px;
+    font-size: small;
+}
+
+.notes-button{
     box-shadow: 1px 1px 2px black;
     opacity: 90%;
     cursor: pointer;
+    margin-right: 5px;
 }
 
-.currently-playing{
+.bottom-row{
     margin-top: 2px;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
 }
 
 .trash-can{
     cursor: pointer;
     display: flex;
     width: 25px;
+    margin-right: 10px;
 }
+
+.popup-div{
+    display: flex;
+}
+
+.popup-button{
+    margin-left: 5px;
+    box-shadow: 1px 1px 2px black;
+    opacity: 90%;
+    cursor: pointer;
+    height: 30px;
+    width: 60px;
+}
+
+.popup-text{
+    padding: 5px;
+    resize: none;
+    margin-top: -6px;
+    margin-left: 230px;
+    min-height: 98px;
+    min-width: 235px;
+    background-color: #2e2e2e;
+    border-radius: 5px;
+}
+
+.popup-text:focus{
+    outline: none !important;
+}
+
+.popup-arrow {
+    color: rgb(255, 255, 255, 0);
+  }
