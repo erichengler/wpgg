@@ -19,6 +19,7 @@
     margin: 10px;
     background: #2e2e2e;
     border-radius: 5px;
+    box-shadow: 2px 2px 4px black;
 }
 
 .games-list{
@@ -31,6 +32,7 @@
     font-size: larger;
     font-weight: 600;
     color: #5fa2b5;
+    margin-bottom: 2px;
 }
 
 .filter{
@@ -55,4 +57,14 @@
 
 .filter-no{
     font-size: small;
+}
+
+.notes{
+    box-shadow: 1px 1px 2px black;
+    opacity: 90%;
+    cursor: pointer;
+}
+
+.currently-playing{
+    margin-top: 2px;
 }

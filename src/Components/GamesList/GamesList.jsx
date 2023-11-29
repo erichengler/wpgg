@@ -78,16 +78,16 @@ function GamesList() {
                   {game.hours} hours &nbsp;
                   <button className="notes">View Notes</button>
                   <br />
-                  <span className={game.playing ? 'filter-yes' : 'filter-no'}>
-                    {game.playing
-                      ? `✔`
-                      : `❌`}
-                  </span>
-                  <span>
-                    {game.playing
-                      ? ' Currently Playing'
-                      : ' Not Currently Playing'}
-                  </span>
+                  <div className="currently-playing">
+                    <span className={game.playing ? "filter-yes" : "filter-no"}>
+                      {game.playing ? `✔` : `❌`}
+                    </span>
+                    <span>
+                      {game.playing
+                        ? " Currently Playing"
+                        : " Not Currently Playing"}
+                    </span>
+                  </div>
                 </li>
               </ul>
             </div>
