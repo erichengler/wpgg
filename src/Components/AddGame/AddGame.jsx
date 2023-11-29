@@ -97,7 +97,7 @@ const User = () => {
           </div>
           <br />
 
-          <button type="submit" className="submit-button">
+          <button type="submit" className="addgame-button">
             Submit
           </button>
         </form>

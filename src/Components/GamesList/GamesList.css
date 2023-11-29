@@ -27,11 +27,21 @@
     margin-left: -15px;
 }
 
+.title-and-delete{
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-top: 13px;
+    padding-right: 10px;
+    margin-bottom: -12px;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+}
+
 .game-title{
     font-size: larger;
     font-weight: 600;
     color: #5fa2b5;
-    margin-bottom: 2px;
 }
 
 .filter{
@@ -66,4 +76,10 @@
 
 .currently-playing{
     margin-top: 2px;
+}
+
+.trash-can{
+    cursor: pointer;
+    display: flex;
+    width: 25px;
 }

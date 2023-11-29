@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
         res.json(result.rows);
     
     } catch (error) {
-        console.log('Error fetching games:', error);
+        console.log('Error fetching games from database:', error);
         res.sendStatus(500);
     }
 });
@@ -26,6 +26,21 @@ router.post('/', async (req, res) => {
 
     } catch (error) {
         console.log('Error adding game to database:', error);
+        res.sendStatus(500);
+    }
+});
+
+router.delete('/:id', async (req, res) => {
+    const gameId = req.params.id;
+
+    try {
+        await pool.query(
+            `DELETE FROM games WHERE id = $1`, [gameId]
+        );
+        res.sendStatus(200);
+
+    } catch (error) {
+        console.log('Error deleting game from database:', error);
         res.sendStatus(500);
     }
 });

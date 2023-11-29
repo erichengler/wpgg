@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+
+import trash_icon from "../../Assets/images/trash.png";
 import "./GamesList.css";
 
 function GamesList() {
@@ -47,10 +49,24 @@ function GamesList() {
     return;
   });
 
+  const handleRemoveGame = async (gameId) => {
+    try {
+      // Delete request to remove game with specified id
+      await axios.delete(`/games/${gameId}`);
+
+      // Fetch updated game list
+      const response = await axios.get("/games");
+      setGames(response.data);
+    } catch (error) {
+      console.log("Error removing game:", error);
+    }
+  };
+
   return (
     <div className="games-container">
       <h2 className="games-header">Games</h2>
 
+      {/* Sort by filter */}
       <div className="filter">
         <span className="filter-by" onClick={handleSortBy("name")}>
           Name {sortCriteria === "name" && (sortOrder === "asc" ? "▲" : "▼")}
@@ -68,12 +84,22 @@ function GamesList() {
         </span>
       </div>
 
+      {/* Games list */}
       {games.length === 0
         ? "No Games Found"
         : sortedGames.map((game) => (
             <div key={game.id} className="item-container">
+              <div className="title-and-delete">
+                <span className="game-title">{game.title}</span>
+                <img 
+                  className="trash-can" 
+                  src={trash_icon} 
+                  alt="Password" 
+                  onClick={() => handleRemoveGame(game.id)}
+                />
+              </div>
+
               <ul className="games-list">
-                <li className="game-title">{game.title}</li>
                 <li>
                   {game.hours} hours &nbsp;
                   <button className="notes">View Notes</button>
