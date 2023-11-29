@@ -31,7 +31,7 @@ const Login = () => {
         storedUser.password === password
       ) {
         console.log("Login successful");
-        navigate("/addgame");
+        navigate("/games");
       } else {
         console.log("Login failed. Please try again.");
       }

@@ -12,7 +12,6 @@
     font-size: x-large;
     font-weight: 700;
     margin-bottom: -8px;
-    text-decoration: underline;
 }
 
 .new-game-input{
@@ -40,7 +39,7 @@
    margin-right: 5px;
 }
 
-.form-button{
+.submit-button{
     font-size: medium;
     width: 180px;
     height: 28px;

@@ -48,7 +48,7 @@ const User = () => {
   return (
     <>
       <div className="new-game-container">
-        <h2 className="new-game-header">Add New Game</h2>
+        <h2 className="new-game-header">Add Game</h2>
         <form onSubmit={handleSubmit} className="form">
           <div className="new-game-input">
             <input
@@ -97,7 +97,7 @@ const User = () => {
           </div>
           <br />
 
-          <button type="submit" className="form-button">
+          <button type="submit" className="submit-button">
             Submit
           </button>
         </form>
