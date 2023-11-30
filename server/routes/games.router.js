@@ -45,4 +45,20 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
+router.put('/:id', async (req, res) => {
+    const notes = req.body.notes;
+    const gameId = req.params.id;
+
+    try {
+        await pool.query(
+            `UPDATE games SET notes = $1 WHERE id = $2`, [notes, gameId]
+        );
+        res.sendStatus(200);
+
+    } catch (error) {
+        console.log('Error updating game notes:', error);
+        res.sendStatus(500);
+    }
+})
+
 module.exports = router;

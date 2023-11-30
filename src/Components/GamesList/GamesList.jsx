@@ -9,18 +9,19 @@ function GamesList() {
   const [games, setGames] = useState([]);
   const [sortCriteria, setSortCriteria] = useState("hours");
   const [sortOrder, setSortOrder] = useState("desc");
+  const [newNotes, setNewNotes] = useState('');
+
+  const fetchGames = async () => {
+    try {
+      const response = await axios.get("/games");
+
+      setGames(response.data);
+    } catch (error) {
+      console.log("Error fetching games:", error);
+    }
+  };
 
   useEffect(() => {
-    const fetchGames = async () => {
-      try {
-        const response = await axios.get("/games");
-
-        setGames(response.data);
-      } catch (error) {
-        console.log("Error fetching games:", error);
-      }
-    };
-
     fetchGames();
   }, []);
 
@@ -63,8 +64,14 @@ function GamesList() {
     }
   };
 
-  const handleNotes = () => {
-    // axios put request goes here
+  const handleNotes = async (gameId) => {
+    try {
+      await axios.put(`/games/${gameId}`, { id: gameId, notes: newNotes });
+    
+    } catch (error) {
+      console.log('Error updating notes:', error);
+    }
+    fetchGames();
   };
 
   return (
@@ -110,12 +117,13 @@ function GamesList() {
                         <textarea
                           className="popup-text"
                           defaultValue={game.notes}
+                          onChange={(e) => setNewNotes(e.target.value)}
                         ></textarea>
                         <button
                           className="popup-button"
-                          onClick={() => {
+                          onClick={async () => {
                             // Update notes
-                            handleNotes();
+                            await handleNotes(game.id);
                             // Close notes popup
                             close();
                           }}
