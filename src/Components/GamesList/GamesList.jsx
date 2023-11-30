@@ -63,6 +63,10 @@ function GamesList() {
     }
   };
 
+  const handleNotes = () => {
+    // axios put request goes here
+  };
+
   return (
     <div className="games-container">
       <h2 className="games-header">Games</h2>
@@ -101,15 +105,32 @@ function GamesList() {
                     trigger={<button className="notes-button">Notes</button>}
                     position="center"
                   >
-                    <div className="popup-div">
-                      <textarea className="popup-text">{game.notes}</textarea>
-                      <button className="popup-button">Save</button>
-                    </div>
+                    {(close) => (
+                      <div className="popup-div">
+                        <textarea
+                          className="popup-text"
+                          defaultValue={game.notes}
+                        ></textarea>
+                        <button
+                          className="popup-button"
+                          onClick={() => {
+                            // Update notes
+                            handleNotes();
+                            // Close notes popup
+                            close();
+                          }}
+                        >
+                          Save
+                        </button>
+                      </div>
+                    )}
                   </Popup>
                   {game.hours} hours &nbsp;
                   <br />
                   <div className="bottom-row">
-                    <span className={game.playing ? "playing-yes" : "playing-no"}>
+                    <span
+                      className={game.playing ? "playing-yes" : "playing-no"}
+                    >
                       {game.playing ? `✔` : `❌`}
                     </span>
                     <span>
