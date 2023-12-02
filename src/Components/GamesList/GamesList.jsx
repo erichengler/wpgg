@@ -9,7 +9,7 @@ function GamesList() {
   const [games, setGames] = useState([]);
   const [sortCriteria, setSortCriteria] = useState("hours");
   const [sortOrder, setSortOrder] = useState("desc");
-  const [newNotes, setNewNotes] = useState('');
+  const [newNotes, setNewNotes] = useState("");
 
   const fetchGames = async () => {
     try {
@@ -67,9 +67,8 @@ function GamesList() {
   const handleNotes = async (gameId) => {
     try {
       await axios.put(`/games/${gameId}`, { id: gameId, notes: newNotes });
-    
     } catch (error) {
-      console.log('Error updating notes:', error);
+      console.log("Error updating notes:", error);
     }
     fetchGames();
   };
