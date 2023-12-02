@@ -44,8 +44,11 @@
 .filter{
     color: #111111;
     font-weight: 500;
-    cursor: default;
     margin-bottom: 5px;
+}
+
+.filter-text{
+    cursor: pointer;
 }
 
 .filter-by:hover{

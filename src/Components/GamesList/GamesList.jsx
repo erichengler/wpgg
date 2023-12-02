@@ -80,15 +80,15 @@ function GamesList() {
 
       {/* Sort by filter */}
       <div className="filter">
-        <span onClick={handleSortBy("name")}>
+        <span className="filter-text" onClick={handleSortBy("name")}>
           Name {sortCriteria === "name" && (sortOrder === "asc" ? "▲" : "▼")}
         </span>{" "}
         &nbsp;| &nbsp;
-        <span onClick={handleSortBy("hours")}>
+        <span className="filter-text" onClick={handleSortBy("hours")}>
           Hours {sortCriteria === "hours" && (sortOrder === "asc" ? "▲" : "▼")}
         </span>{" "}
         &nbsp;| &nbsp;
-        <span onClick={handleSortBy("playing")}>
+        <span className="filter-text" onClick={handleSortBy("playing")}>
           Currently Playing{" "}
           <span className={sortOrder === "asc" ? "filter-no" : "filter-yes"}>
             {sortCriteria === "playing" && (sortOrder === "asc" ? "❌" : "✔")}
