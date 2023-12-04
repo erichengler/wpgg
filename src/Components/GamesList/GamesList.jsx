@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import SortBy from "../SortBy/SortBy";
 
 import Popup from "reactjs-popup";
 import trash_icon from "../../Assets/images/trash.png";
@@ -25,15 +26,6 @@ function GamesList() {
     fetchGames();
   }, []);
 
-  const handleSortBy = (criteria) => () => {
-    if (sortCriteria === criteria) {
-      setSortOrder(sortOrder === "asc" ? "desc" : "asc");
-    } else {
-      setSortCriteria(criteria);
-      setSortOrder("asc");
-    }
-  };
-
   const sortedGames = games.sort((a, b) => {
     // Sort based on criteria and order
     if (sortCriteria === "name") {
@@ -49,7 +41,7 @@ function GamesList() {
     }
     // Default, no sorting
     return;
-  });
+  });  
 
   const handleRemoveGame = async (gameId) => {
     try {
@@ -94,24 +86,12 @@ function GamesList() {
     <div className="games-container">
       <h2 className="games-header">Games</h2>
 
-      {/* Sort by filter */}
-      <div className="filter">
-        <span className="filter-text" onClick={handleSortBy("name")}>
-          Name {sortCriteria === "name" && (sortOrder === "asc" ? "▲" : "▼")}
-        </span>{" "}
-        &nbsp;| &nbsp;
-        <span className="filter-text" onClick={handleSortBy("hours")}>
-          Hours {sortCriteria === "hours" && (sortOrder === "asc" ? "▲" : "▼")}
-        </span>{" "}
-        &nbsp;| &nbsp;
-        <span className="filter-text" onClick={handleSortBy("playing")}>
-          Currently Playing{" "}
-          <span 
-            className={sortOrder === "asc" ? "filter-no" : "filter-yes"}>
-            {sortCriteria === "playing" && (sortOrder === "asc" ? "❌" : "✔")}
-          </span>
-        </span>
-      </div>
+      <SortBy 
+        sortCriteria = {sortCriteria}
+        setSortCriteria = {setSortCriteria}
+        sortOrder = {sortOrder}
+        setSortOrder = {setSortOrder}
+      />
 
       {/* Games list */}
       {games.length === 0
