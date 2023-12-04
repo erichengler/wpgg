@@ -12,16 +12,31 @@
     min-width: 60px;
 }
 
+@media only screen and (max-width: 767px) {
+    /* Styles for phones */
+    .popup-text {
+      margin-left: -47px
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    /* Styles for tablets and PCs */
+    .popup-text {
+      margin-left: -40px;
+    }
+}
+
 .popup-text{
     padding: 5px;
     resize: none;
     margin-top: -6px;
-    margin-left: -40px;
     min-height: 98px;
     min-width: 235px;
     background-color: #2e2e2e;
     border-radius: 5px;
 }
+
+
 
 .popup-text:focus{
     outline: none !important;
