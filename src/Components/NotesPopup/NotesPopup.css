@@ -36,8 +36,6 @@
     border-radius: 5px;
 }
 
-
-
 .popup-text:focus{
     outline: none !important;
 }
