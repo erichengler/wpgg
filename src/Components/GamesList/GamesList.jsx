@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import "./GamesList.css";
 
 import SortBy from "../SortBy/SortBy";
 import RemoveGame from "../RemoveGame/RemoveGame";
-
-import Popup from "reactjs-popup";
-import "./GamesList.css";
+import NotesPopup from "../NotesPopup/NotesPopup";
+import CurrentlyPlaying from "../CurrentlyPlaying/CurrentlyPlaying";
 
 function GamesList() {
   const [games, setGames] = useState([]);
@@ -42,43 +42,17 @@ function GamesList() {
     }
     // Default, no sorting
     return;
-  });  
-
-  const handleNotes = async (gameId) => {
-    try {
-      await axios.put(`/games/${gameId}`, { id: gameId, notes: newNotes });
-    } catch (error) {
-      console.log("Error updating notes:", error);
-    }
-    fetchGames();
-  };
-
-  const handlePlaying = async (gameId, bool) => {
-    let changeTo;
-
-    if (bool === "true") {
-      changeTo = "false"
-    } else {
-      changeTo = "true"
-    }
-
-    try {
-      await axios.put(`/playing/${gameId}`, { id: gameId, newBool: changeTo });
-    } catch (error) {
-      console.log("Error updating currently playing:", error);
-    }
-    fetchGames();
-  }
+  });
 
   return (
     <div className="games-container">
       <h2 className="games-header">Games</h2>
 
-      <SortBy 
-        sortCriteria = {sortCriteria}
-        setSortCriteria = {setSortCriteria}
-        sortOrder = {sortOrder}
-        setSortOrder = {setSortOrder}
+      <SortBy
+        sortCriteria={sortCriteria}
+        setSortCriteria={setSortCriteria}
+        sortOrder={sortOrder}
+        setSortOrder={setSortOrder}
       />
 
       {/* Games list */}
@@ -92,57 +66,29 @@ function GamesList() {
 
               <ul className="games-list">
                 <li>
-                  {/* Notes Popup */}
-                  <Popup
-                    trigger={<button className="notes-button">Notes</button>}
-                    position="center"
-                  >
-                    {(close) => (
-                      <div className="popup-div">
-                        <textarea
-                          className="popup-text"
-                          defaultValue={game.notes}
-                          onChange={(e) => setNewNotes(e.target.value)}
-                        ></textarea>
-                        <button
-                          className="popup-button"
-                          onClick={async () => {
-                            // Update notes
-                            await handleNotes(game.id);
-                            // Close notes popup
-                            close();
-                          }}
-                        >
-                          Save
-                        </button>
-                      </div>
-                    )}
-                  </Popup>
+                  <NotesPopup 
+                    fetchGames={fetchGames} 
+                    game={game}
+                    newNotes={newNotes}
+                    setNewNotes={setNewNotes}
+                  />
                   {game.hours} hours &nbsp;
                   <br />
-                  <div className="bottom-row">
-                    <span
-                      className={game.playing ? "playing-yes" : "playing-no"}
-                      onClick={() => handlePlaying(game.id, game.playing ? "true" : "false")}
-                    >
-                      {game.playing ? `✔` : `❌`}
-                    </span>
-                    <span>
-                      {game.playing
-                        ? " Currently Playing"
-                        : " Not Currently Playing"}
-                    </span>
-                    
-                    <RemoveGame 
-                      game = {game}
-                      setGames = {setGames}
-                    />
 
+                  <div className="bottom-row">
+                    <CurrentlyPlaying 
+                      game={game} 
+                      fetchGames={fetchGames} 
+                    />
+                    <RemoveGame 
+                      game={game} 
+                      setGames={setGames} 
+                    />
                   </div>
                 </li>
               </ul>
             </div>
-          ))}
+      ))}
     </div>
   );
 }

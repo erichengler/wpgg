@@ -1,4 +1,5 @@
 import axios from "axios";
+import './RemoveGame.css';
 import trash_icon from "../../Assets/images/trash.png";
 
 function RemoveGame({ game, setGames }) {
@@ -15,7 +16,7 @@ function RemoveGame({ game, setGames }) {
       console.log("Error removing game:", error);
     }
   };
-  
+
   return (
     <>
       {/* Delete icon */}

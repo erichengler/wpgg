@@ -1,0 +1,6 @@
+.trash-can{
+    cursor: pointer;
+    display: flex;
+    width: 25px;
+    margin-right: 10px;
+}

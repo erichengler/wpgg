@@ -41,26 +41,6 @@
     color: #5fa2b5;
 }
 
-.playing-yes{
-    cursor: pointer;
-    margin-right: -115px;
-    color: rgb(0, 165, 0);
-}
-
-.playing-no{
-    cursor: pointer;
-    margin-top: 3px;
-    margin-right: -80px;
-    font-size: small;
-}
-
-.notes-button{
-    box-shadow: 1px 1px 2px black;
-    opacity: 90%;
-    cursor: pointer;
-    margin-right: 5px;
-}
-
 .bottom-row{
     margin-top: 2px;
     justify-content: space-between;
@@ -68,42 +48,5 @@
     flex-direction: row;
 }
 
-.trash-can{
-    cursor: pointer;
-    display: flex;
-    width: 25px;
-    margin-right: 10px;
-}
 
-.popup-div{
-    display: flex;
-    width: 0px;
-}
 
-.popup-button{
-    margin-left: 5px;
-    margin-top: 65px;
-    box-shadow: 1px 1px 2px black;
-    cursor: pointer;
-    height: 35px;
-    min-width: 60px;
-}
-
-.popup-text{
-    padding: 5px;
-    resize: none;
-    margin-top: -6px;
-    margin-left: -40px;
-    min-height: 98px;
-    min-width: 235px;
-    background-color: #2e2e2e;
-    border-radius: 5px;
-}
-
-.popup-text:focus{
-    outline: none !important;
-}
-
-.popup-arrow {
-    color: rgb(255, 255, 255, 0);
-  }
