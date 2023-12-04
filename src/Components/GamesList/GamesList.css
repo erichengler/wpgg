@@ -65,11 +65,13 @@
 }
 
 .playing-yes{
+    cursor: pointer;
     margin-right: -115px;
     color: rgb(0, 165, 0);
 }
 
 .playing-no{
+    cursor: pointer;
     margin-top: 3px;
     margin-right: -80px;
     font-size: small;

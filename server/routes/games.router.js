@@ -59,6 +59,6 @@ router.put('/:id', async (req, res) => {
         console.log('Error updating game notes:', error);
         res.sendStatus(500);
     }
-})
+});
 
 module.exports = router;

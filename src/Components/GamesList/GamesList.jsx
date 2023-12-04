@@ -73,6 +73,23 @@ function GamesList() {
     fetchGames();
   };
 
+  const handlePlaying = async (gameId, bool) => {
+    let changeTo;
+
+    if (bool === "true") {
+      changeTo = "false"
+    } else {
+      changeTo = "true"
+    }
+
+    try {
+      await axios.put(`/playing/${gameId}`, { id: gameId, newBool: changeTo });
+    } catch (error) {
+      console.log("Error updating currently playing:", error);
+    }
+    fetchGames();
+  }
+
   return (
     <div className="games-container">
       <h2 className="games-header">Games</h2>
@@ -89,7 +106,8 @@ function GamesList() {
         &nbsp;| &nbsp;
         <span className="filter-text" onClick={handleSortBy("playing")}>
           Currently Playing{" "}
-          <span className={sortOrder === "asc" ? "filter-no" : "filter-yes"}>
+          <span 
+            className={sortOrder === "asc" ? "filter-no" : "filter-yes"}>
             {sortCriteria === "playing" && (sortOrder === "asc" ? "❌" : "✔")}
           </span>
         </span>
@@ -137,6 +155,7 @@ function GamesList() {
                   <div className="bottom-row">
                     <span
                       className={game.playing ? "playing-yes" : "playing-no"}
+                      onClick={() => handlePlaying(game.id, game.playing ? "true" : "false")}
                     >
                       {game.playing ? `✔` : `❌`}
                     </span>
