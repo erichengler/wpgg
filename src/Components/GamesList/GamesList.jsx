@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+
 import SortBy from "../SortBy/SortBy";
+import RemoveGame from "../RemoveGame/RemoveGame";
 
 import Popup from "reactjs-popup";
-import trash_icon from "../../Assets/images/trash.png";
 import "./GamesList.css";
 
 function GamesList() {
@@ -42,19 +43,6 @@ function GamesList() {
     // Default, no sorting
     return;
   });  
-
-  const handleRemoveGame = async (gameId) => {
-    try {
-      // Delete request to remove game with specified id
-      await axios.delete(`/games/${gameId}`);
-
-      // Fetch updated game list
-      const response = await axios.get("/games");
-      setGames(response.data);
-    } catch (error) {
-      console.log("Error removing game:", error);
-    }
-  };
 
   const handleNotes = async (gameId) => {
     try {
@@ -144,14 +132,12 @@ function GamesList() {
                         ? " Currently Playing"
                         : " Not Currently Playing"}
                     </span>
-
-                    {/* Delete icon */}
-                    <img
-                      className="trash-can"
-                      src={trash_icon}
-                      alt="Password"
-                      onClick={() => handleRemoveGame(game.id)}
+                    
+                    <RemoveGame 
+                      game = {game}
+                      setGames = {setGames}
                     />
+
                   </div>
                 </li>
               </ul>

@@ -1,0 +1,17 @@
+.filter{
+    color: #111111;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.filter-text{
+    cursor: pointer;
+}
+
+.filter-yes{
+    color: rgb(0, 165, 0);
+}
+
+.filter-no{
+    font-size: small;
+}
