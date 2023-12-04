@@ -1,7 +1,23 @@
 # Wise Play Game Grove (WPGG)
 
-The purpose of this application will be to assist people (such as myself) who have too many games in their Steam library. Sometimes I will buy a game just because its on sale and totally forget about it! Or I will start a game and play for a few hours, only to forget where I was or why I was playing it.
+Full stack CRUD application created to help PC gamers keep track of the games in their Steam library. 
 
-This application will allow a user to categorize the games in their Steam library, as well as attach notes and reminders to their games for future reference. It will also allow a user to see the gameplay hours per dollar of the games they own.
+After registering and logging in, users can manually add the games they wish to track to the database using the `Add Game` form. Games added to the database will be displayed on the `Games` page. Games can be easily removed from the database.
 
-Stretch Goal: Allow the application to recommend the next game to buy or play based on the user's input (perhaps after answering a few questions).
+Users can also attach notes to each game. These notes can contain a review of the game, reasons why a user is playing or isn't playing a certain game, or any other reminders or personal information. Notes can easily be updated or deleted.
+
+## Preview
+
+![Preview1](./public/add_game.png)
+<br />
+
+![Preview2](./public//games.png)
+<br />
+
+## Stretch Goals (in progress): 
+
+After login / authorization is added to the application, allow users to connect their steam account to the app.
+
+Once games have been added, users will be able to "Get Hours" which will make a call to the Steam API to update the hours played of the games that have been added (if they are also in the user's Steam Game Library).
+
+Calculate the hours per dollar of the games using the Steam API.
