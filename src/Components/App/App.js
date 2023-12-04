@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 
-import Login from "../Login/Login";
-import GamesList from "../GamesList/GamesList";
-import AddGame from "../AddGame/AddGame";
-import About from "../About/About";
+import Login from "../Pages/Login/Login";
+import GamesList from "../Pages/GamesList/GamesList";
+import AddGame from "../Pages/AddGame/AddGame";
+import About from "../Pages/About/About";
 import Navbar from "../Navbar/Navbar";
 import Header from "../Header/Header";
 import "./App.css";

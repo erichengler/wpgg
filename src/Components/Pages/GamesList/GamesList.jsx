@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./GamesList.css";
 
-import SortBy from "../SortBy/SortBy";
-import GameItem from "../GameItem/GameItem";
+import SortBy from "../../SortBy/SortBy";
+import GameItem from "../../GameItem/GameItem";
 
 function GamesList() {
   const [games, setGames] = useState([]);

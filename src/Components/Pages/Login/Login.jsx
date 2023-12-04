@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import password_icon from "../../Assets/images/password.png";
-import user_icon from "../../Assets/images/person.png";
+import password_icon from "../../../Assets/images/password.png";
+import user_icon from "../../../Assets/images/person.png";
 import "./Login.css";
 
 const Login = () => {
