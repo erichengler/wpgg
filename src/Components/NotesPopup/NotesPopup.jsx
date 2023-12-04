@@ -4,9 +4,13 @@ import './NotesPopup.css';
 import { useState } from "react";
 
 function NotesPopup({ fetchGames, game }) {
+  // ------- State for storing notes -------
   const [newNotes, setNewNotes] = useState("");
 
+  // ------- Handle update notes -------
   const handleNotes = async (gameId) => {
+
+    // ------- Put request to update notes of game with specific id -------
     try {
       await axios.put(`/games/${gameId}`, { id: gameId, notes: newNotes });
     } catch (error) {
@@ -16,17 +20,22 @@ function NotesPopup({ fetchGames, game }) {
   };
 
   return (
+    // ------- Notes Popup -------
     <Popup
       trigger={<button className="notes-button">Notes</button>}
       position="center"
     >
       {(close) => (
         <div className="popup-div">
+
+          {/* ------- Notes text area ------- */}
           <textarea
             className="popup-text"
             defaultValue={game.notes}
             onChange={(e) => setNewNotes(e.target.value)}
           ></textarea>
+
+          {/* ------- Save notes button ------- */}
           <button
             className="popup-button"
             onClick={async () => {

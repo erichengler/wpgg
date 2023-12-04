@@ -4,12 +4,13 @@ import trash_icon from "../../Assets/images/trash.png";
 
 function RemoveGame({ game, setGames }) {
 
+  // ------- Handle remove game from database -------
   const handleRemoveGame = async (gameId) => {
     try {
-      // Delete request to remove game with specified id
+      // ------- Delete request -------
       await axios.delete(`/games/${gameId}`);
 
-      // Fetch updated game list
+      // ------- Fetch updated game list -------
       const response = await axios.get("/games");
       setGames(response.data);
     } catch (error) {
@@ -19,7 +20,7 @@ function RemoveGame({ game, setGames }) {
 
   return (
     <>
-      {/* Delete icon */}
+      {/* ------- Delete icon ------- */}
       <img
         className="trash-can"
         src={trash_icon}

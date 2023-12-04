@@ -6,24 +6,28 @@ import SortBy from "../../SortBy/SortBy";
 import GameItem from "../../GameItem/GameItem";
 
 function GamesList() {
+  
+  // ------- State for games and sorting criteria -------
   const [games, setGames] = useState([]);
   const [sortCriteria, setSortCriteria] = useState("hours");
   const [sortOrder, setSortOrder] = useState("desc");
 
+  // ------- Get request to fetch games -------
   const fetchGames = async () => {
     try {
       const response = await axios.get("/games");
-
       setGames(response.data);
     } catch (error) {
       console.log("Error fetching games:", error);
     }
   };
 
+  // ------- Fetch games on page load -------
   useEffect(() => {
     fetchGames();
   }, []);
 
+  // ------- Sort by logic -------
   const sortedGames = games.sort((a, b) => {
     // Sort based on criteria and order
     if (sortCriteria === "name") {
@@ -37,7 +41,7 @@ function GamesList() {
         ? a.playing - b.playing
         : b.playing - a.playing;
     }
-    // Default, no sorting
+    // ------- Default, no sorting -------
     return;
   });
 
@@ -45,6 +49,7 @@ function GamesList() {
     <div className="games-container">
       <h2 className="games-header">Games</h2>
 
+      {/* ------- Sort by filter ------- */}
       <SortBy
         sortCriteria={sortCriteria}
         setSortCriteria={setSortCriteria}
@@ -52,7 +57,7 @@ function GamesList() {
         setSortOrder={setSortOrder}
       />
 
-      {/* Games list */}
+      {/* ------- Games list ------- */}
       {games.length === 0
         ? "No Games Found"
         : sortedGames.map((game) => (

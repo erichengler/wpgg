@@ -8,23 +8,27 @@ function GameItem({ game, setGames, fetchGames }) {
 
   return (
     <div key={game.id} className="item-container">
-      <div className="title">
-        <span className="game-title">{game.title}</span>
-      </div>
+      {/* ------- Game Header ------- */}
+      <span className="game-title">{game.title}</span>
 
       <ul className="games-list">
         <li>
+          {/* ------- Notes component ------- */}
           <NotesPopup
             fetchGames={fetchGames}
             game={game}
           />
+          {/* ------- Hours played ------- */}
           {game.hours} hours &nbsp;
           <br />
+
           <div className="bottom-row">
+            {/* ------- Playing component ------- */}
             <CurrentlyPlaying 
                 game={game} 
                 fetchGames={fetchGames} 
             />
+            {/* ------- Remove component ------- */}
             <RemoveGame 
                 game={game} 
                 setGames={setGames} 
