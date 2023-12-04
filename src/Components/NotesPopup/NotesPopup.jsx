@@ -1,8 +1,11 @@
 import axios from "axios";
 import Popup from "reactjs-popup";
 import './NotesPopup.css';
+import { useState } from "react";
 
-function NotesPopup({ fetchGames, game, newNotes, setNewNotes }) {
+function NotesPopup({ fetchGames, game }) {
+  const [newNotes, setNewNotes] = useState("");
+
   const handleNotes = async (gameId) => {
     try {
       await axios.put(`/games/${gameId}`, { id: gameId, notes: newNotes });

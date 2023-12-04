@@ -3,15 +3,12 @@ import axios from "axios";
 import "./GamesList.css";
 
 import SortBy from "../SortBy/SortBy";
-import RemoveGame from "../RemoveGame/RemoveGame";
-import NotesPopup from "../NotesPopup/NotesPopup";
-import CurrentlyPlaying from "../CurrentlyPlaying/CurrentlyPlaying";
+import GameItem from "../GameItem/GameItem";
 
 function GamesList() {
   const [games, setGames] = useState([]);
   const [sortCriteria, setSortCriteria] = useState("hours");
   const [sortOrder, setSortOrder] = useState("desc");
-  const [newNotes, setNewNotes] = useState("");
 
   const fetchGames = async () => {
     try {
@@ -59,35 +56,12 @@ function GamesList() {
       {games.length === 0
         ? "No Games Found"
         : sortedGames.map((game) => (
-            <div key={game.id} className="item-container">
-              <div className="title">
-                <span className="game-title">{game.title}</span>
-              </div>
-
-              <ul className="games-list">
-                <li>
-                  <NotesPopup 
-                    fetchGames={fetchGames} 
-                    game={game}
-                    newNotes={newNotes}
-                    setNewNotes={setNewNotes}
-                  />
-                  {game.hours} hours &nbsp;
-                  <br />
-
-                  <div className="bottom-row">
-                    <CurrentlyPlaying 
-                      game={game} 
-                      fetchGames={fetchGames} 
-                    />
-                    <RemoveGame 
-                      game={game} 
-                      setGames={setGames} 
-                    />
-                  </div>
-                </li>
-              </ul>
-            </div>
+          <GameItem 
+            key={game.id}
+            game={game}
+            setGames={setGames}
+            fetchGames={fetchGames}
+          />
       ))}
     </div>
   );
