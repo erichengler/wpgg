@@ -11,7 +11,7 @@ Users can also attach notes to each game. These notes can contain a review of th
 ![Preview1](./public/add_game.png)
 <br />
 
-![Preview2](./public//games.png)
+![Preview2](./public/games.png)
 <br />
 
 ## Stretch Goals (in progress): 
@@ -20,4 +20,4 @@ After login / authorization is added to the application, allow users to connect 
 
 Once games have been added, users will be able to "Get Hours" which will make a call to the Steam API to update the hours played of the games that have been added (if they are also in the user's Steam Game Library).
 
-Calculate the hours per dollar of the games using the Steam API.
+Pull the cost of each game from the Steam API and calculate the amount of hours per dollar of each game.
